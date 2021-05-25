@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "wushi.scheduler.config.remote.host",
+      "type": "java.lang.String",
+      "description": "Description for wushi.scheduler.config.remote.host."
+    },
+    {
+      "name": "wushi.scheduler.config.report-info",
+      "type": "java.lang.String",
+      "description": "Description for wushi.scheduler.config.report-info."
+    },
+    {
+      "name": "wushi.mix.customer-id",
+      "type": "java.lang.String",
+      "description": "Description for wushi.mix.customer-id."
+    }
+  ] }

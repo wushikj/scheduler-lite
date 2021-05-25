@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: maven:3-jdk-8
+  volumes:
+  - name: mvn_cache # The Volume's name
+    path: /root/.m2 # The path in the container
+  commands:
+  - mvn clean compile
+
+volumes:
+- name: mvn_cache # The name use in this pipeline,
+  host:
+    path: /vdb/mvn_repo/.m2 # The path be used in the host.

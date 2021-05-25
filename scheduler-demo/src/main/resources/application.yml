@@ -1,0 +1,28 @@
+wushi:
+  scheduler:
+    config:
+      source: local
+      remote:
+        host: 192.168.1.1
+        key: 123423
+      console:
+        enabled: true
+        host: 192.168.1.1
+        key: 123423
+      name: 图片采集
+      display-name: 没有什么
+      description: 中央气象网数据
+      shutdown-immediate: true
+      report-info: true
+  mix:
+    customer-id: 2123 #客户编码
+    project-id: 1313 #项目编码
+    mix-endpoint: http://192.168.30.199:1123  #日志上报接口
+    mix-endpoint-key: 1234513abABqe131413 #上报密钥
+    env: prod #环境，默认prod正式，dev开发、test测试
+    timeout: 5000 #请求超时配置，毫秒
+logging:
+  level:
+    org:
+      quartz: off
+    root: info

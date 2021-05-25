@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false" scan="false">
+    <springProperty scope="context" name="spring.application.name" source="spring.application.name" defaultValue=""/>
+    <property scope="context" name="log.path" value="logs/${spring.application.name}"/>
+    <!-- 彩色日志格式 -->
+    <property scope="context" name="log.console.pattern"
+              value="%date - %highlight(%-5level) [%thread] %green([%logger{50}]) - %highlight(%msg) data={jobId=%X{jobId},traceId=%X{traceId},pos=%file:%line} %n"/>
+    <property scope="context" name="log.console.pattern111"
+              value="%date - %highlight(%-5level) [%thread] %green([%logger{50}]) - %highlight(%msg) data={jobId=%X{jobId},traceId=%X{traceId},pos=%file:%line} %n"/>
+
+    <!-- Console log output -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log.console.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file debug output -->
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/debug-%i.log</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date -%5level [%thread] [%logger{50}] %msg data={jobId=%X{jobId},traceId=%X{traceId},pos=%file:%line} %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file error output -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/error-%i.log</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date -%5level [%thread] [%logger{50}] %file:%line - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="debug"/>
+        <appender-ref ref="error"/>
+<!--        <appender-ref ref="sentry"/>-->
+    </root>
+</configuration>

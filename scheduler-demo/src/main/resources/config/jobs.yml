@@ -1,0 +1,81 @@
+- id: intervalTestJob
+  desc: 备注
+  class: com.wushi.scheduler.jobs.TestJob
+  enabled: true
+  trigger: interval#10s
+  exception: interrupt#true
+  immediate: 'true'
+  data:
+    i: 123
+- id: intervalTestJob22222
+  desc: 备注
+  class: com.wushi.scheduler.jobs.TestJob
+  enabled: true
+  trigger: interval#5s
+  exception: retry#3#5s
+  immediate: 'true'
+- id: fileChangeTestJob
+  desc: 备注
+  class: com.wushi.scheduler.jobs.TestJob
+  enabled: false
+  trigger: file#/Users/yulianghua/Downloads/file.md
+  immediate: 'true'
+  data:
+    i: 123
+    a: adsd
+    d: '2015-01-01T20:00:00'
+    b: true
+    list:
+      - a
+      - b
+      - c
+    list1:
+      - 1
+      - 2
+      - 3
+    list2:
+      - 1.12
+      - 2.31
+      - 3.41
+    pojo:
+      id: 1
+      name: zhangsan
+- id: TestJob_from_1
+  desc: 备注
+  class: com.wushi.scheduler.jobs.TestJob
+  enabled: true
+  trigger: 'cron#1,5 * * * * ? '
+  immediate: true
+- id: TestJob2
+  desc: 备注
+  class: com.wushi.scheduler.jobs.TestJob2
+  enabled: true
+  trigger: interval#5s
+  #exception: interrupt#true
+  data:
+    i: 123
+    a: adsd
+    d: '2015-01-01T20:00:00'
+    b: true
+    list:
+      - a
+      - b
+      - c
+    list1:
+      - 1
+      - 2
+      - 3
+    list2:
+      - 1.12
+      - 2.31
+      - 3.41
+    pojo:
+      id: 1
+      name: zhangsan
+- id: TestJob2-1
+  desc: 备注
+  class: com.wushi.scheduler.jobs.FileListenerJob
+  enabled: false
+  trigger: file#/Users/yulianghua/Downloads
+  immediate: true
+

@@ -1,0 +1,14 @@
+.log
+Log/
+log/
+logs/
+.mvn/
+.idea/
+target/
+/ec-web/target/
+/ec-tests/target/
+/ec-security/target/
+/ec-dao/target/
+/ec-common/target/
+*.iml
+.DS_Store
